@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function show(int $productId)
     {
 
     }
