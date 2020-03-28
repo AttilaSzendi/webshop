@@ -40,7 +40,9 @@
         "psr-4": {
             "App\\": "app/",
             "Modules\\User\\": "modules/User/src",
-            "Modules\\Product\\": "modules/Product/src"
+            "Modules\\Product\\": "modules/Product/src",
+            "Modules\\Authorization\\Role\\": "modules/Authorization/Role/src",
+            "Modules\\Authorization\\Permission\\": "modules/Authorization/Permission/src"
         },
         "classmap": [
             "database/seeds",
@@ -51,7 +53,9 @@
         "psr-4": {
             "Tests\\": "tests/",
             "Modules\\User\\Tests\\": "modules/User/tests",
-            "Modules\\Product\\Tests\\": "modules/Product/tests"
+            "Modules\\Product\\Tests\\": "modules/Product/tests",
+            "Modules\\Authorization\\Role\\Tests\\": "modules/Authorization/Role/tests",
+            "Modules\\Authorization\\Permission\\Tests\\": "modules/Authorization/Permission/tests"
         }
     },
     "minimum-stability": "dev",

@@ -4,28 +4,26 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductTranslationsTable extends Migration
+class CreateRoleTranslationsTable extends Migration
 {
     public function up()
     {
-        Schema::create('product_translations', function(Blueprint $table) {
+        Schema::create('role_translations', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('product_id')->index();
+            $table->unsignedInteger('role_id')->index();
             $table->string('locale')->index();
             $table->string('name');
-            $table->text('description');
 
-            $table->unique(['product_id', 'locale']);
-
-            $table->foreign('product_id')
+            $table->unique(['role_id', 'locale']);
+            $table->foreign('role_id')
                 ->references('id')
-                ->on('products')
+                ->on('roles')
                 ->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('product_translations');
+        Schema::dropIfExists('role_translations');
     }
 }
