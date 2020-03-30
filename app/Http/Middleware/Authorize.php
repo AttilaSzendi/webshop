@@ -17,7 +17,6 @@ class Authorize
     protected $userRepository;
 
     /**
-     * Authorize constructor.
      * @param UserRepositoryInterface $userRepository
      */
     public function __construct(UserRepositoryInterface $userRepository)
@@ -26,8 +25,6 @@ class Authorize
     }
 
     /**
-     * Handle an incoming request.
-     *
      * @param  Request $request
      * @param  Closure $next
      * @param  string $permission
@@ -44,9 +41,9 @@ class Authorize
      * @param User $user
      * @param string $permission
      */
-    protected function checkPermission(?User $user, string $permission): void
+    protected function checkPermission(User $user, string $permission): void
     {
-        $userPermissions = $user === null ? [] : $this->userRepository->permissions($user->id);
+        $userPermissions = $this->userRepository->permissions($user);
 
         if (!in_array($permission, $userPermissions)) {
             throw new HttpException(Response::HTTP_FORBIDDEN, __('authorize.unauthorized'));

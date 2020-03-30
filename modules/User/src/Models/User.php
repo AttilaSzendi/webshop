@@ -10,7 +10,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Passport\HasApiTokens;
 use Modules\Authorization\Role\Model\Role;
-use Modules\Authorization\Role\Models\Relations\RoleUser;
 
 /**
  * @property int id
@@ -28,23 +27,15 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $dates = ['email_verified_at'];
 
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['name', 'email', 'password'];
 
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
     /**
      * @return BelongsToMany
      */
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class)->using(RoleUser::class)->withTimestamps();
+        return $this->belongsToMany(Role::class);
     }
 }

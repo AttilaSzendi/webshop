@@ -9,17 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\Authorization\Permission\Model\Permission;
 use Modules\User\Models\User;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 
 /**
  * @property int id
  * @property string name
- * @property string translatable_name
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Collection users
  * @property Collection permissions
  */
-class Role extends Model
+class Role extends Model implements TranslatableContract
 {
     use Translatable;
 

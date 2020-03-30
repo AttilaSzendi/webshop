@@ -9,6 +9,12 @@ use Modules\User\Models\User;
 
 class UserUtilities
 {
+    /**
+     * @param $role
+     * @param $permissions
+     * @param array $parameters
+     * @return User
+     */
     public function createUserWithRoleAndPermissions($role, $permissions, $parameters = []): User
     {
         $permissionIds = [];

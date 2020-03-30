@@ -27,9 +27,9 @@ class PermissionEloquentRepository implements PermissionEloquentRepositoryInterf
         return $this->model
             ->newQuery()
             ->when($search, function (Builder $query) use ($search) {
-                $query->where('name', 'LIKE', "%$search%");
+                $query->where('key', 'LIKE', "%$search%");
             })
-            ->select('id', 'name')
+            ->select('id', 'key')
             ->get();
     }
 }

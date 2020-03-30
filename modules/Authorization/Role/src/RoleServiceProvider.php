@@ -2,19 +2,27 @@
 
 namespace Modules\Authorization\Role;
 
-use App\Providers\ModuleServiceProvider;
+use App\Providers\AbstractModuleServiceProvider;
 use Modules\Authorization\Role\Contracts\Repositories\RoleRepositoryInterface;
 use Modules\Authorization\Role\Contracts\Services\UserRoleHandlerInterface;
 use Modules\Authorization\Role\Repositories\RoleRepository;
 use Modules\Authorization\Role\Services\UserRoleHandler;
 
-class RoleServiceProvider extends ModuleServiceProvider
+class RoleServiceProvider extends AbstractModuleServiceProvider
 {
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'migrations');
-        $this->loadRoutesFromModule(__DIR__ . DIRECTORY_SEPARATOR . 'routes.php');
-        $this->loadFactoriesFrom(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'factories');
+        $this->loadRoutesFrom(
+            __DIR__ . '/../routes/routes.php'
+        );
+
+        $this->loadMigrationsFrom(
+            __DIR__ . '/../database/migrations'
+        );
+
+        $this->loadFactoriesFrom(
+            __DIR__ . '/../database/factories'
+        );
     }
 
     public function register()
