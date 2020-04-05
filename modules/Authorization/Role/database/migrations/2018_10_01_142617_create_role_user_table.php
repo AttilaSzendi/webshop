@@ -6,16 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateRoleUserTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('role_user', function (Blueprint $table) {
             $table->unsignedInteger('role_id')->index();
-            $table->unsignedInteger('user_id')->index();
+            $table->unsignedBigInteger('user_id')->index();
             $table->timestamps();
 
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
@@ -23,11 +18,6 @@ class CreateRoleUserTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('role_user');

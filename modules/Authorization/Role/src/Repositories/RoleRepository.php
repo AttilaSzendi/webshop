@@ -2,11 +2,11 @@
 
 namespace Modules\Authorization\Role\Repositories;
 
-use App\Repositories\AbstractEloquentCrudRepository;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Authorization\Role\Contracts\Repositories\RoleRepositoryInterface;
 use Modules\Authorization\Role\Model\Role;
 
-class RoleRepository extends AbstractEloquentCrudRepository implements RoleRepositoryInterface
+class RoleRepository implements RoleRepositoryInterface
 {
     /**
      * @var Role
@@ -33,7 +33,8 @@ class RoleRepository extends AbstractEloquentCrudRepository implements RoleRepos
     }
 
     /**
-     * @inheritDoc
+     * @param string $roleName
+     * @return Role|Model
      */
     public function findRoleByName(string $roleName): Role {
         return $this->model->newQuery()->where('name', $roleName)->firstOrFail();

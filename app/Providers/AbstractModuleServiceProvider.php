@@ -17,7 +17,7 @@ abstract class AbstractModuleServiceProvider extends ServiceProvider
             /** @var Router $router */
             $router = resolve('router');
 
-            $router->middleware('api')->group(function() use ($path, $router) {
+            $router->middleware('api')->prefix('api')->group(function() use ($path, $router) {
                 require $path;
             });
         }

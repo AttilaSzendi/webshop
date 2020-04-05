@@ -10,7 +10,7 @@ class CreateProductTranslationsTable extends Migration
     {
         Schema::create('product_translations', function(Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('product_id')->index();
+            $table->unsignedBigInteger('product_id')->index();
             $table->string('locale')->index();
             $table->string('name');
             $table->text('description');
