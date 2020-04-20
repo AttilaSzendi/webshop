@@ -30,6 +30,8 @@ class UserServiceProvider extends AbstractModuleServiceProvider
             'informationPage'
         );
 
+        $this->app->register(UserEventServiceProvider::class);
+
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 }

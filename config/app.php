@@ -2,6 +2,8 @@
 
 return [
 
+    'web_client_url' => env('WEB_CLIENT_URL', 'http://localhost:8080'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

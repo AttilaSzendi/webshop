@@ -2,6 +2,7 @@
 
 namespace Modules\User\Repositories;
 
+use Illuminate\Database\Eloquent\Model;
 use Modules\Authorization\Permission\Model\Permission;
 use Modules\User\Contracts\Repositories\UserRepositoryInterface;
 use Modules\User\Models\User;
@@ -15,6 +16,24 @@ class UserRepository implements UserRepositoryInterface
     public function __construct(User $model)
     {
         $this->model = $model;
+    }
+
+    /**
+     * @param array $attributes
+     * @return User|Model
+     */
+    public function store(array $attributes): User
+    {
+        return $this->model->newQuery()->create($attributes);
+    }
+
+    /**
+     * @param string $email
+     * @return User|Model
+     */
+    public function findByEmail(string $email): User
+    {
+        return $this->model->newQuery()->where('email', $email)->firstOrFail();
     }
 
     /**
